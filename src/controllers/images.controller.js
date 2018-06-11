@@ -10,12 +10,12 @@ function ImagesController() {
 }
 
 ImagesController.prototype.hideCommentForm = function(){
-  this.$addCommentForm.hide(); 
+  this.$addCommentForm.hide(); // initially hide add comment form
 };
 
 ImagesController.prototype.destroyImageLiveEventListener = function(){
   var self = this;
-  this.$wrapper.on('click', '.destroy-image', function(){ 
+  this.$wrapper.on('click', '.destroy-image', function(){ //live event imageener
     var imageId = parseInt($(this).parents('h2').next('ul').data('id'));
     Image.all.splice(imageId, 1, null);
     self.$selectImageMenu.find('option[value="'+imageId+'"]').remove();

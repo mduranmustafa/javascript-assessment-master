@@ -1,23 +1,36 @@
 class CommentsController {
   constructor() {
-    this.$addCommentForm = $('.add-comment') 
+	 this.$wrapper = $('#wrapper')
+    this.$addCommentForm = $('.add-comment')
+	
   }
 
   init() {
-    // kick off controller from here
+    this.addCommentFormListener()
+	this.destroyCommentLiveEventListener() 
   }
 
   addCommentFormListener() {
-    this.$addCommentForm.on('submit', '.add-comment',(event) => {
-      event.preventDefault();
-      var imageId = parseInt($(this).parents('h2').next('ul').data('id'));
-      var currentComment = $(event.currentTarget).find("input[type=text]").val()
-      var yeniYorum = new Comment(imageid, comment);
-      yeniYorum.findImage(imageid)
-      $(event.currentTarget).find("input[type=text]").val("");
-      let $imageul = this.$target.find("ul#comments-" + comment["imageid"])
-    $imageul.append(comment.commentEl());
-    });
+    $('.add-comment').toArray().forEach((child) => {
+      child.addEventListener("submit", (event) => {
+        event.preventDefault()
+        let commentText = event.target.children[1].value
+        let imageId = parseInt(event.target.dataset.id)
+        let comment = new Comment(commentText, imageId)
+        this.render(comment)
+        event.target.children[1].value = ""
+      })
+    })
   }
-    
+
+  render(commentObject) {
+    $(`#image-${commentObject.image.id}`).append(commentObject.commentEl())
+  }
+  
+  destroyCommentLiveEventListener(){
+    var self = this;
+    this.$wrapper.on('click', '.destroy-comment', function(){ //live event imageener
+      $(this).parents('li').remove()
+    });
+  };
 }
