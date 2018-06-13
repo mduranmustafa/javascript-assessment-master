@@ -24,7 +24,7 @@ Image.prototype.imageEl = function() {
   </div>`;
 };
 
-Image.load = function() {
+Image.load = function() { //self trigged function
   Image.defaults.map(function(image){
     var newImage = new Image(image.title, image.url)
     ImagesController.render(newImage)

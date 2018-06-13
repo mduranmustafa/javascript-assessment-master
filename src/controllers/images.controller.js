@@ -8,11 +8,11 @@ function ImagesController() {
   this.$addCommentForm = $('#add-comment');
   this.$wrapper = $('#wrapper');
 }
-
+//add new method to ImagesController to  hide comment form startup
 ImagesController.prototype.hideCommentForm = function(){
-  this.$addCommentForm.hide(); // initially hide add comment form
+  this.$addCommentForm.hide(); // initially hide add comment form with self invoking method
 };
-
+//add new method to ImagesController to  destroy
 ImagesController.prototype.destroyImageLiveEventListener = function(){
   var self = this;
   this.$wrapper.on('click', '.destroy-image', function(){ //live event imageener
@@ -22,11 +22,11 @@ ImagesController.prototype.destroyImageLiveEventListener = function(){
     $(this).parents('.image').remove();
   });
 };
-
+//add new method to ImagesController to display images
 ImagesController.render = function(image) {
   $('#images').append(image.imageEl());
 }
-
+//method to initialize
 ImagesController.prototype.init = function() {
   this.hideCommentForm();
   this.destroyImageLiveEventListener();
