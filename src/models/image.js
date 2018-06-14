@@ -8,23 +8,23 @@ function Image(title, url) {
   this.comments = [];
   this.constructor.all.push(this);
 }
-
+//Adding self invoking method to Image function
 Image.prototype.imageEl = function() {
   return `<div class="image">
-    <h2><button class="destroy-image">x</button>${this.title}</h2>
+    <h2><button class="image-sil">x</button>${this.title}</h2>
     <ul id="image-${this.id}" data-id="${this.id}">
       <img src="${this.url}"></img>
       <ul id="comments-${this.id}"></ul>
       <form id="add-comment" class="add-comment" data-id=${this.id} action="#" method="post">
         <label for="comment-description">Comment: </label>
-        <input type="text" id="comment-description-${this.id}" class="user-text" name="comment-description" placeholder="comment">
+        <input type="text" id="comment-description-${this.id}" class="user-text" name="comment-description" placeholder="enter comment here">
         <input type="submit" value="(+) add comment">
       </form>
     </ul>
   </div>`;
 };
-
-Image.load = function() { //self trigged function
+//Loading images
+Image.load = function() { //self trigged function added to Image function
   Image.defaults.map(function(image){
     var newImage = new Image(image.title, image.url)
     ImagesController.render(newImage)

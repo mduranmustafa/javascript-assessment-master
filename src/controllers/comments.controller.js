@@ -5,7 +5,7 @@ class CommentsController {
     this.$addCommentForm = $('.add-comment') //assingn .add-comment class 
 	
   }
-//Initialize
+//Initialize the methods
   init() {
     this.addCommentFormListener()
 	this.destroyCommentLiveEventListener() 

@@ -1,5 +1,5 @@
 'use strict';
-// Images Controller
+// Images Controller 
 function ImagesController() {
   this.$addImage = $('#add_image');
   this.$imageTitleInput = $('#image_title');
@@ -12,10 +12,10 @@ function ImagesController() {
 ImagesController.prototype.hideCommentForm = function(){
   this.$addCommentForm.hide(); // initially hide add comment form with self invoking method
 };
-//add new method to ImagesController to  destroy
+//add new method to ImagesController to  destroy and clear the ids etc
 ImagesController.prototype.destroyImageLiveEventListener = function(){
   var self = this;
-  this.$wrapper.on('click', '.destroy-image', function(){ //live event imageener
+  this.$wrapper.on('click', '.image-sil', function(){ 
     var imageId = parseInt($(this).parents('h2').next('ul').data('id'));
     Image.all.splice(imageId, 1, null);
     self.$selectImageMenu.find('option[value="'+imageId+'"]').remove();

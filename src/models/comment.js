@@ -1,7 +1,7 @@
 // create Comment class here
 
-var allComments = []
-//Decleratino of Comment class. Class names starts witk Capital letter 
+var allComments = [] //allComments array initialized
+//Decleration of Comment class. Class names starts witk Capital letter 
 class Comment {
   constructor(comment, imageId){ 
     Comment.all().push(this) //add comment to array
@@ -10,7 +10,7 @@ class Comment {
     this.commentContent = comment // assign comment
   }
 
-  static all(){ //static method
+  static all(){ //static method (can only be used in the class not instance of the class)
     return allComments
   }
     //To list the comments
